@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { Question } from '../question/question.model';
+import { QuestionService } from './question.service';
 
-const q = new Question(
+/* const q = new Question(
   'Cómo reutilizo un componente en android',
   'Miren la pregunta es..',
   new Date(),
   'devicon-android-plain'
-)
+) */
 
 @Component({
   selector: 'app-question-list',
@@ -29,8 +30,10 @@ const q = new Question(
       right: 30px;
       font-size: 24px;
     }
-  `]
+  `],
+  providers: [QuestionService]
 })
 export class QuestionListComponent {
-  questions: Question[] = new Array(10).fill(q);
+  constructor(private questionService: QuestionService) {}
+  // questions: Question[] = new Array(10).fill(q);
 }
