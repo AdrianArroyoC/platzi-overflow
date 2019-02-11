@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Question } from '../question/question.model';
 import { QuestionService } from './question.service';
 
@@ -30,10 +30,29 @@ import { QuestionService } from './question.service';
       right: 30px;
       font-size: 24px;
     }
+
+    .spinner {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      height: 30%;
+      width: 50%;
+      margin: 0 0 0 -15%;
+    }
   `],
   providers: [QuestionService]
 })
-export class QuestionListComponent {
+export class QuestionListComponent implements OnInit {
   constructor(private questionService: QuestionService) {}
-  // questions: Question[] = new Array(10).fill(q);
+
+  questions: Question[]; // = new Array(10).fill(q);
+  loading = true;
+
+  ngOnInit() {
+    this.questionService.getQuestions()
+    .then((questions: Question[]) => {
+      this.questions = questions;
+      this.loading = false;
+    });
+  }
 }
