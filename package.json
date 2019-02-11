@@ -35,8 +35,9 @@
     "moment": "^2.22.2",
     "ngx-moment": "^3.0.1",
     "nodemon": "^1.18.9",
-    "rxjs": "^6.4.0",
+    "rxjs": "6.4.0",
     "rxjs-compat": "^6.4.0",
+    "typescript": "^2.9.2",
     "url-join": "^4.0.0",
     "zone.js": "^0.8.26"
   },
@@ -58,7 +59,6 @@
     "karma-jasmine-html-reporter": "^0.2.2",
     "protractor": "^5.4.2",
     "ts-node": "~5.0.1",
-    "tslint": "~5.9.1",
-    "typescript": "~2.7.2"
+    "tslint": "~5.9.1"
   }
 }

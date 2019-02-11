@@ -123,5 +123,10 @@
       }
     }
   },
-  "defaultProject": "platzi-overflow"
+  "defaultProject": "platzi-overflow",
+  "cli": {
+    "warnings": {
+      "typescriptMismatch": false
+    }
+  }
 }
