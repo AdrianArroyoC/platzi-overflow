@@ -4,21 +4,23 @@ import { Answer } from './answer.model';
 import { User } from '../auth/user.model';
 import { Question } from '../question/question.model';
 import { QuestionService } from '../question/question.service';
-
+import SweetScroll from 'sweet-scroll';
 
 @Component({
   selector: 'app-answer-form',
   templateUrl: './answer-form.component.html',
   styleUrls: ['./answer-form.component.css'],
-  providers: [ QuestionService ]
+  providers: [QuestionService]
 })
 export class AnswerFormComponent implements OnInit {
   @Input() question: Question;
+  sweetScroll: SweetScroll;
 
-  constructor(private questionService: QuestionService) { }
-
-  ngOnInit() {
+  constructor(private questionService: QuestionService) { 
+    this.sweetScroll = new SweetScroll();
   }
+
+  ngOnInit() {}
 
   onSubmit(form: NgForm) {
     // console.log(form.value.description);
@@ -30,7 +32,10 @@ export class AnswerFormComponent implements OnInit {
     );
     this.questionService.addAnswer(answer)
       .subscribe(
-        a => this.question.answers.unshift(a),
+        a => {
+          this.question.answers.unshift(a);
+          this.sweetScroll.to('#title');
+        },
         error => console.log(error)
       );
     // this.question.answers.unshift(answer); //push al final

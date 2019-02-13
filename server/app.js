@@ -1,6 +1,6 @@
 import express from 'express'
 import bodyParser from 'body-parser'
-import { question } from './routes'
+import { question, auth } from './routes'
 
 const app = express()
 
@@ -18,5 +18,6 @@ if (process.env.NODE_ENV === 'development') {
 
 //app.get('/', (req, res) => res.send('Hola desde express!'))
 app.use('/api/questions', question)
+app.use('/api/questions', auth)
 
 export default app

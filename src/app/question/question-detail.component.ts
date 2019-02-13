@@ -7,7 +7,7 @@ import { ActivatedRoute } from '@angular/router';
   selector: 'app-question-detail',
   templateUrl: './question-detail.component.html',
   styleUrls: ['./question-detail.component.css'],
-  providers: [ QuestionService ]
+  providers: [QuestionService]
 })
 export class QuestionDetailComponent implements OnInit, OnDestroy {
   question?: Question;
