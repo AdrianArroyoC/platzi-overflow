@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
   providers: [ QuestionService ]
 })
 export class QuestionDetailComponent implements OnInit, OnDestroy {
-  question?: Question; 
+  question?: Question;
   /*= new Question(
     'Esta es una nueva pregunta',
     'Mi duda es sobre una aplicación que estoy haciendo',
@@ -22,7 +22,7 @@ export class QuestionDetailComponent implements OnInit, OnDestroy {
 
   constructor(
     private questionService: QuestionService,
-    private route: ActivatedRoute  
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit() {

@@ -21,7 +21,7 @@ export class AnswerFormComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    //console.log(form.value.description);
+    // console.log(form.value.description);
     const answer = new Answer(
       form.value.description,
       this.question
@@ -32,8 +32,8 @@ export class AnswerFormComponent implements OnInit {
       .subscribe(
         a => this.question.answers.unshift(a),
         error => console.log(error)
-      )
-    //this.question.answers.unshift(answer); //push al final
+      );
+    // this.question.answers.unshift(answer); //push al final
     form.reset();
-  } //Convención del nombre de método para cuando un usuario manda datos
+  } // Convención del nombre de método para cuando un usuario manda datos
 }

@@ -14,7 +14,7 @@ export class QuestionService {
     private questionsUrl: string;
 
     constructor(private http: Http) {
-         this.questionsUrl = urljoin(environment.apiUrl, 'questions')
+         this.questionsUrl = urljoin(environment.apiUrl, 'questions');
     }
 
     getQuestions(): Promise<void | Question[]> {
@@ -43,7 +43,7 @@ export class QuestionService {
     addAnswer(answer: Answer) {
         const body = JSON.stringify(answer);
         const headers = new Headers({ 'Content-Type': 'application/json' });
-        const url = urljoin(this.questionsUrl, answer.question._id, 'answers')
+        const url = urljoin(this.questionsUrl, answer.question._id, 'answers');
         return this.http.post(url, body, { headers })
             .map((response: Response) => response.json())
             .catch(( error: Response ) => Observable.throw(error.json()));
@@ -51,8 +51,7 @@ export class QuestionService {
 
     handleError(error: any) {
         const errMsg = error.message ? error.message :
-            error.status ? `${error.status} - ${error.statusText}` : 
-            'Server error';
+            error.status ? `${error.status} - ${error.statusText}` : 'Server error';
         console.log(errMsg);
     }
 }
