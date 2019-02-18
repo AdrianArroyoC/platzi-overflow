@@ -1,9 +1,20 @@
 // import http from 'http'
 import Debug from 'debug'
 import app from './app'
+import mongoose from 'mongoose'
+import { mongoUrl } from './config'
 
 const PORT = 3000
 const debug = new Debug('platzi-overflow:root')
+
+mongoose.Promise = global.Promise
+
+async function start() {
+    await mongoose.connect(mongoUrl, { useMongoClient: true })
+    app.listen(PORT, () => {
+        debug(`Server runing at port ${PORT}`)
+    })
+}
 
 /* const app = http.createServer((req, res) => {
     debug('New request')
@@ -12,6 +23,4 @@ const debug = new Debug('platzi-overflow:root')
     res.end()
 }) */
 
-app.listen(PORT, () => {
-    debug(`Server runing at port ${PORT}`)
-})
+start()

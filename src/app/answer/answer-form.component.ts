@@ -5,6 +5,8 @@ import { User } from '../auth/user.model';
 import { Question } from '../question/question.model';
 import { QuestionService } from '../question/question.service';
 import SweetScroll from 'sweet-scroll';
+import { AuthService } from '../auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-answer-form',
@@ -16,13 +18,18 @@ export class AnswerFormComponent implements OnInit {
   @Input() question: Question;
   sweetScroll: SweetScroll;
 
-  constructor(private questionService: QuestionService) { 
+  constructor(private questionService: QuestionService,
+    private authService: AuthService,
+    private router: Router) { 
     this.sweetScroll = new SweetScroll();
   }
 
   ngOnInit() {}
 
   onSubmit(form: NgForm) {
+    if(!this.authService.isLoggedIn()) {
+      this.router.navigateByUrl('/signin');
+    }
     // console.log(form.value.description);
     const answer = new Answer(
       form.value.description,
@@ -36,7 +43,7 @@ export class AnswerFormComponent implements OnInit {
           this.question.answers.unshift(a);
           this.sweetScroll.to('#title');
         },
-        error => console.log(error)
+        this.authService.handleError
       );
     // this.question.answers.unshift(answer); //push al final
     form.reset();

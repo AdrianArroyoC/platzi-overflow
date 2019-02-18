@@ -18,6 +18,6 @@ if (process.env.NODE_ENV === 'development') {
 
 //app.get('/', (req, res) => res.send('Hola desde express!'))
 app.use('/api/questions', question)
-app.use('/api/questions', auth)
+app.use('/api/auth', auth)
 
 export default app
