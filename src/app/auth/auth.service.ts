@@ -6,14 +6,14 @@ import { Http, Headers, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
 import { Router } from '@angular/router';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable()
 export class AuthService {
-    usersUrl: string
+    usersUrl: string;
     currentUser?: User;
 
-    constructor(private http: Http, 
+    constructor(private http: Http,
         private router: Router,
         public snackBar: MatSnackBar) {
         this.usersUrl = urljoin(environment.apiUrl, 'auth');

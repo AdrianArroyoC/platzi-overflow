@@ -10,7 +10,7 @@ const debug = new Debug('platzi-overflow:root')
 mongoose.Promise = global.Promise
 
 async function start() {
-    await mongoose.connect(mongoUrl, { useMongoClient: true })
+    await mongoose.connect(mongoUrl, { useNewUrlParser: true, useCreateIndex: true })
     app.listen(PORT, () => {
         debug(`Server runing at port ${PORT}`)
     })

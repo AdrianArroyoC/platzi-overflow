@@ -1,2 +1,2 @@
 export const secret = 'miclavesecreta'
-export const mongoUrl = 'mongobd://localhost/platzi-overflow'
+export const mongoUrl = 'mongodb://localhost/platzi-overflow'
